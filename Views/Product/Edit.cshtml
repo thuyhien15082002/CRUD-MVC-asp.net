@@ -1,0 +1,67 @@
+﻿@model Product
+@{
+}
+<div class="container mt-5">
+    <h2 class="mb-4">Edit New Product</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="name">Product Id</label>
+            <input type="text" readonly value="@ViewData["ProductId"]" class="form-control" maxlength="100">
+            
+        </div>
+        <div class="form-group">
+            <label for="name">Product Name</label>
+            <input type="text" asp-for="Name" class="form-control" id="name" placeholder="Enter product name" maxlength="100">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label for="image">Image URL</label>
+            <input type="file" asp-for="Image" class="form-control" id="image" placeholder="Enter image URL" maxlength="100">
+            <span asp-validation-for="Image"></span>
+        </div>
+        <div class="form-group">
+            <img src="/products/@ViewData["ImageFile"]" style="width:50px;">
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price</label>
+            <input type="number" asp-for="Price" step="0.01" class="form-control" id="price" placeholder="Enter price" required>
+            <span asp-validation-for="Price"></span>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" asp-for="Description" id="description" rows="3" placeholder="Enter product description" maxlength="400"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <input type="number" asp-for="Status" class="form-control" id="status" placeholder="Enter status">
+            <span asp-validation-for="Status"></span>
+        </div>
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select class="form-select" asp-for="Category">
+                <option value="Khac">Khac</option>
+                <option value="Quan">Quan</option>
+                <option value="Vay">Vay</option>
+                <option value="So mi">So mi</option>
+                <option value="Phong">Phong</option>
+                <option value="Ao khoac">Ao khoac</option>
+                <option value="Polo">Polo</option>
+
+            </select>
+
+
+        </div>
+        <div class="form-group">
+            <label for="status">Create at</label>
+            <input type="datetime" readonly value="@ViewData["CreateAt"]">
+            
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-outline-primary" asp-controller="Product" asp-action="Index" role="button">
+            Cancel
+        </a>
+    </form>
+</div>
